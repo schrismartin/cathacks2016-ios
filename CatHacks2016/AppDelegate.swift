@@ -18,10 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Override point for customization after application launch.
-        let pebble = PBPebbleCentral.defaultCentral()
-        pebble.delegate = self
         pebbleCentral = PBPebbleCentral.defaultCentral()
-        pebbleCentral.appUUID = PBGolfUUID
+        pebbleCentral.appUUID = NSUUID(UUIDString: "769dd7d3-f147-4b71-a12e-b6d63581da45")
         
         UINavigationBar.appearance().barTintColor = COLOR_MAIN;
         UINavigationBar.appearance().translucent = true
