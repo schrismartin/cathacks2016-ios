@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		731DBB7D224CEACEC9BA5B0B /* libPods-CatHacks2016.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB64244A5DA2F8977590EFF /* libPods-CatHacks2016.a */; };
+		B4CF912D1CB99D2500C99C39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF912C1CB99D2500C99C39 /* Constants.swift */; };
+		B4CF912F1CB9A22200C99C39 /* MainViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF912E1CB9A22200C99C39 /* MainViewCollectionViewController.swift */; };
+		B4CF91311CB9A27400C99C39 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91301CB9A27400C99C39 /* FavoritesTableViewController.swift */; };
+		B4CF91331CB9A27F00C99C39 /* FoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91321CB9A27F00C99C39 /* FoodTableViewController.swift */; };
 		B4EF4F501CB963E700D0FFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF4F4F1CB963E700D0FFCC /* AppDelegate.swift */; };
-		B4EF4F521CB963E700D0FFCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF4F511CB963E700D0FFCC /* ViewController.swift */; };
+		B4EF4F521CB963E700D0FFCC /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF4F511CB963E700D0FFCC /* LoadingViewController.swift */; };
 		B4EF4F551CB963E700D0FFCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4EF4F531CB963E700D0FFCC /* Main.storyboard */; };
 		B4EF4F571CB963E700D0FFCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4EF4F561CB963E700D0FFCC /* Assets.xcassets */; };
 		B4EF4F5A1CB963E700D0FFCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4EF4F581CB963E700D0FFCC /* LaunchScreen.storyboard */; };
@@ -38,9 +42,13 @@
 		3D8CE87BAB143023A3E2B566 /* Pods-CatHacks2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatHacks2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatHacks2016/Pods-CatHacks2016.release.xcconfig"; sourceTree = "<group>"; };
 		4FB64244A5DA2F8977590EFF /* libPods-CatHacks2016.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CatHacks2016.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5744411711A990EBAA1529 /* Pods-CatHacks2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatHacks2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatHacks2016/Pods-CatHacks2016.debug.xcconfig"; sourceTree = "<group>"; };
+		B4CF912C1CB99D2500C99C39 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B4CF912E1CB9A22200C99C39 /* MainViewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewController.swift; sourceTree = "<group>"; };
+		B4CF91301CB9A27400C99C39 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		B4CF91321CB9A27F00C99C39 /* FoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewController.swift; sourceTree = "<group>"; };
 		B4EF4F4C1CB963E700D0FFCC /* CatHacks2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatHacks2016.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EF4F4F1CB963E700D0FFCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4EF4F511CB963E700D0FFCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B4EF4F511CB963E700D0FFCC /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		B4EF4F541CB963E700D0FFCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4EF4F561CB963E700D0FFCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4EF4F591CB963E700D0FFCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,7 +129,10 @@
 		B4CF91291CB99AB900C99C39 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B4EF4F511CB963E700D0FFCC /* ViewController.swift */,
+				B4EF4F511CB963E700D0FFCC /* LoadingViewController.swift */,
+				B4CF91301CB9A27400C99C39 /* FavoritesTableViewController.swift */,
+				B4CF91321CB9A27F00C99C39 /* FoodTableViewController.swift */,
+				B4CF912E1CB9A22200C99C39 /* MainViewCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -140,6 +151,7 @@
 				B4EF4F581CB963E700D0FFCC /* LaunchScreen.storyboard */,
 				B4EF4F531CB963E700D0FFCC /* Main.storyboard */,
 				B4EF4F561CB963E700D0FFCC /* Assets.xcassets */,
+				B4CF912C1CB99D2500C99C39 /* Constants.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -379,8 +391,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4EF4F521CB963E700D0FFCC /* ViewController.swift in Sources */,
+				B4CF912F1CB9A22200C99C39 /* MainViewCollectionViewController.swift in Sources */,
+				B4CF91331CB9A27F00C99C39 /* FoodTableViewController.swift in Sources */,
+				B4EF4F521CB963E700D0FFCC /* LoadingViewController.swift in Sources */,
 				B4EF4F501CB963E700D0FFCC /* AppDelegate.swift in Sources */,
+				B4CF91311CB9A27400C99C39 /* FavoritesTableViewController.swift in Sources */,
+				B4CF912D1CB99D2500C99C39 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

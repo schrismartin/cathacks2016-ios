@@ -31,14 +31,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pebble = PBPebbleCentral.defaultCentral()
         pebble.delegate = self
         
-        var uuidBytes = Array<UInt8>(count:16, repeatedValue:0)
-        let uuid = NSUUID(UUIDString: "86a4631c-05f5-4a63-92ce-fd510995b93f"")
-            
-        uuid?.getUUIDBytes(&uuidBytes)
-        pebble.appUUID = NSData(bytes: &uuidBytes, length: uuidBytes.count)
+        UINavigationBar.appearance().barTintColor = COLOR_MAIN;
+        UINavigationBar.appearance().translucent = true
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor();
+        UITabBar.appearance().tintColor = COLOR_MAIN
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSBackgroundColorAttributeName: UIColor.whiteColor()
+        ]
         
-        watch = pebble.lastConnectedWatch()
+//        var uuidBytes = Array<UInt8>(count:16, repeatedValue:0)
+//        let uuid = NSUUID(UUIDString: "86a4631c-05f5-4a63-92ce-fd510995b93f"")
+//            
+//        uuid?.getUUIDBytes(&uuidBytes)
+//        pebble.appUUID = NSData(bytes: &uuidBytes, length: uuidBytes.count)
+//        
+//        watch = pebble.lastConnectedWatch()
         
+        
+//        
         return true
     }
 

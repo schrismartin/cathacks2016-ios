@@ -9,20 +9,27 @@
 import UIKit
 import PebbleKit
 
-class ViewController: UIViewController {
+class LoadingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("Loading Segue")
+        performSegueWithIdentifier(SEGUE_LOADED, sender: self)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
 
 }
 
