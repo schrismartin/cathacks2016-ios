@@ -36,15 +36,12 @@ class LoadingViewController: UIViewController, PBPebbleCentralDelegate {
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("Loading Segue")
-        performSegueWithIdentifier(SEGUE_LOADED, sender: self)
-        
         guard activeWatch == nil else { return }
-        activeWatch = watch
+//        activeWatch = watch
         
-        watch.appMessagesLaunch { [weak self] _ in
-            
-        }
+//        watch.appMessagesLaunch { [weak self] _ in
+        
+//        }
         
         print("Loading Segue")
         performSegueWithIdentifier(SEGUE_LOADED, sender: self)

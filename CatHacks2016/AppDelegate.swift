@@ -10,7 +10,7 @@ import UIKit
 import PebbleKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, PBPebbleCentralDelegate {
 
     var window: UIWindow?
     var pebbleCentral: PBPebbleCentral!
