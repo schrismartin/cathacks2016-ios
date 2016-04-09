@@ -1,0 +1,19 @@
+{
+  "uuid": "86a4631c-05f5-4a63-92ce-fd510995b93f",
+  "shortName": "RecipEZ",
+  "longName": "RecipEZ",
+  "companyName": "MakeAwesomeHappen",
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt", "chalk"],
+  "enableMultiJS": true,
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
