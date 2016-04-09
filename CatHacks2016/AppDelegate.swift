@@ -13,23 +13,15 @@ import PebbleKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    var watch: PBWatch? {
-        didSet {
-            if let watch = watch {
-                watch.appMessagesLaunch({ (_, error) in
-                    if error != nil {
-                        print("App launched!")
-                    }
-                })
-            }
-        }
-    }
+    var pebbleCentral: PBPebbleCentral!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
         // Override point for customization after application launch.
         let pebble = PBPebbleCentral.defaultCentral()
         pebble.delegate = self
+        pebbleCentral = PBPebbleCentral.defaultCentral()
+        pebbleCentral.appUUID = PBGolfUUID
         
         UINavigationBar.appearance().barTintColor = COLOR_MAIN;
         UINavigationBar.appearance().translucent = true
@@ -40,16 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSBackgroundColorAttributeName: UIColor.whiteColor()
         ]
         
-//        var uuidBytes = Array<UInt8>(count:16, repeatedValue:0)
-//        let uuid = NSUUID(UUIDString: "86a4631c-05f5-4a63-92ce-fd510995b93f"")
-//            
-//        uuid?.getUUIDBytes(&uuidBytes)
-//        pebble.appUUID = NSData(bytes: &uuidBytes, length: uuidBytes.count)
-//        
-//        watch = pebble.lastConnectedWatch()
-        
-        
-//        
         return true
     }
 
@@ -73,14 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-}
-
-extension AppDelegate: PBPebbleCentralDelegate {
-    func pebbleCentral(central: PBPebbleCentral!, watchDidConnect watch: PBWatch!, isNew: Bool) {
-        if self.watch != watch {
-            self.watch = watch
-        }
     }
 }
 
