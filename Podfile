@@ -8,10 +8,12 @@ pod 'PebbleKit'
 end
 
 target 'CatHacks2016Tests' do
+pod 'PebbleKit'
 
 end
 
 target 'CatHacks2016UITests' do
+pod 'PebbleKit'
 
 end
 
