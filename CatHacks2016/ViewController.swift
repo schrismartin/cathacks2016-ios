@@ -9,20 +9,44 @@
 import UIKit
 import PebbleKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PBPebbleCentralDelegate {
 
+    var pebbleCentral: PBPebbleCentral!
+    var activeWatch: PBWatch?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        
+        pebbleCentral = PBPebbleCentral.defaultCentral()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        pebbleCentral.delegate = self
+        pebbleCentral.run()
     }
-
-
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        pebbleCentral.delegate = nil
+    }
+    
+    func pebbleCentral(central: PBPebbleCentral, watchDidConnect watch: PBWatch, isNew: Bool) {
+        print("Hello, \(watch.name)!")
+        
+        guard activeWatch == nil else { return }
+        activeWatch = watch
+        
+        watch.appMessagesLaunch { [weak self] _ in
+            
+        }
+    }
+    
+    
+    func pebbleCentral(central: PBPebbleCentral, watchDidDisconnect watch: PBWatch) {
+        print("Bye, \(watch.name)!")
+        guard activeWatch == watch else { return }
+        
+        activeWatch = nil
+    }
 }
 
