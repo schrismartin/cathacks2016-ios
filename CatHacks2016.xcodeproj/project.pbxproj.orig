@@ -404,6 +404,7 @@
 				B4CF91331CB9A27F00C99C39 /* FoodTableViewController.swift in Sources */,
 				B4CF91391CB9B55E00C99C39 /* FeaturedTableViewController.swift in Sources */,
 				B4EF4F521CB963E700D0FFCC /* LoadingViewController.swift in Sources */,
+				B4CF91351CB9AC5000C99C39 /* FeaturedSectionTableViewCell.swift in Sources */,
 				6F3800D11CB9A81700FBEFB9 /* WatchService.swift in Sources */,
 				B4EF4F501CB963E700D0FFCC /* AppDelegate.swift in Sources */,
 				B4CF91371CB9B15300C99C39 /* HeaderViewController.swift in Sources */,

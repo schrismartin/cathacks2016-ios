@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6F3800D11CB9A81700FBEFB9 /* WatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3800D01CB9A81700FBEFB9 /* WatchService.swift */; };
 		731DBB7D224CEACEC9BA5B0B /* libPods-CatHacks2016.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FB64244A5DA2F8977590EFF /* libPods-CatHacks2016.a */; };
 		B4CF912D1CB99D2500C99C39 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF912C1CB99D2500C99C39 /* Constants.swift */; };
+		B4CF912F1CB9A22200C99C39 /* MainViewCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF912E1CB9A22200C99C39 /* MainViewCollectionViewController.swift */; };
 		B4CF91311CB9A27400C99C39 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91301CB9A27400C99C39 /* FavoritesTableViewController.swift */; };
 		B4CF91331CB9A27F00C99C39 /* FoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91321CB9A27F00C99C39 /* FoodTableViewController.swift */; };
-		B4CF91351CB9AC5000C99C39 /* FeaturedSectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91341CB9AC5000C99C39 /* FeaturedSectionTableViewCell.swift */; };
-		B4CF91371CB9B15300C99C39 /* HeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91361CB9B15300C99C39 /* HeaderViewController.swift */; };
-		B4CF91391CB9B55E00C99C39 /* FeaturedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CF91381CB9B55E00C99C39 /* FeaturedTableViewController.swift */; };
 		B4EF4F501CB963E700D0FFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF4F4F1CB963E700D0FFCC /* AppDelegate.swift */; };
 		B4EF4F521CB963E700D0FFCC /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4EF4F511CB963E700D0FFCC /* LoadingViewController.swift */; };
 		B4EF4F551CB963E700D0FFCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4EF4F531CB963E700D0FFCC /* Main.storyboard */; };
@@ -45,13 +42,10 @@
 		3D8CE87BAB143023A3E2B566 /* Pods-CatHacks2016.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatHacks2016.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatHacks2016/Pods-CatHacks2016.release.xcconfig"; sourceTree = "<group>"; };
 		4FB64244A5DA2F8977590EFF /* libPods-CatHacks2016.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CatHacks2016.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E5744411711A990EBAA1529 /* Pods-CatHacks2016.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatHacks2016.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatHacks2016/Pods-CatHacks2016.debug.xcconfig"; sourceTree = "<group>"; };
-		6F3800D01CB9A81700FBEFB9 /* WatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WatchService.swift; sourceTree = "<group>"; };
 		B4CF912C1CB99D2500C99C39 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B4CF912E1CB9A22200C99C39 /* MainViewCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewCollectionViewController.swift; sourceTree = "<group>"; };
 		B4CF91301CB9A27400C99C39 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		B4CF91321CB9A27F00C99C39 /* FoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodTableViewController.swift; sourceTree = "<group>"; };
-		B4CF91341CB9AC5000C99C39 /* FeaturedSectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedSectionTableViewCell.swift; sourceTree = "<group>"; };
-		B4CF91361CB9B15300C99C39 /* HeaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewController.swift; sourceTree = "<group>"; };
-		B4CF91381CB9B55E00C99C39 /* FeaturedTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeaturedTableViewController.swift; path = ../FeaturedTableViewController.swift; sourceTree = "<group>"; };
 		B4EF4F4C1CB963E700D0FFCC /* CatHacks2016.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CatHacks2016.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4EF4F4F1CB963E700D0FFCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4EF4F511CB963E700D0FFCC /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				B4EF4F4F1CB963E700D0FFCC /* AppDelegate.swift */,
-				6F3800D01CB9A81700FBEFB9 /* WatchService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -129,7 +122,6 @@
 		B4CF91281CB99AB200C99C39 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
-				B4CF91341CB9AC5000C99C39 /* FeaturedSectionTableViewCell.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -140,8 +132,7 @@
 				B4EF4F511CB963E700D0FFCC /* LoadingViewController.swift */,
 				B4CF91301CB9A27400C99C39 /* FavoritesTableViewController.swift */,
 				B4CF91321CB9A27F00C99C39 /* FoodTableViewController.swift */,
-				B4CF91381CB9B55E00C99C39 /* FeaturedTableViewController.swift */,
-				B4CF91361CB9B15300C99C39 /* HeaderViewController.swift */,
+				B4CF912E1CB9A22200C99C39 /* MainViewCollectionViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -289,7 +280,7 @@
 				TargetAttributes = {
 					B4EF4F4B1CB963E700D0FFCC = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4TD75KA4GE;
+						DevelopmentTeam = B3A7ST59NS;
 					};
 					B4EF4F5F1CB963E700D0FFCC = {
 						CreatedOnToolsVersion = 7.3;
@@ -401,12 +392,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4CF912F1CB9A22200C99C39 /* MainViewCollectionViewController.swift in Sources */,
 				B4CF91331CB9A27F00C99C39 /* FoodTableViewController.swift in Sources */,
-				B4CF91391CB9B55E00C99C39 /* FeaturedTableViewController.swift in Sources */,
 				B4EF4F521CB963E700D0FFCC /* LoadingViewController.swift in Sources */,
-				6F3800D11CB9A81700FBEFB9 /* WatchService.swift in Sources */,
 				B4EF4F501CB963E700D0FFCC /* AppDelegate.swift in Sources */,
-				B4CF91371CB9B15300C99C39 /* HeaderViewController.swift in Sources */,
 				B4CF91311CB9A27400C99C39 /* FavoritesTableViewController.swift in Sources */,
 				B4CF912D1CB99D2500C99C39 /* Constants.swift in Sources */,
 			);
@@ -554,12 +543,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CatHacks2016/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schrismartin.CatHacks2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
@@ -570,12 +557,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CatHacks2016/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.schrismartin.CatHacks2016;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
