@@ -32,14 +32,24 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        // Set up sections
         if sections == nil {
             self.sections = [Section]()
         }
         
         self.tableView.separatorStyle = .None
         
-        self.sections?.append(getSectionWithName("Top Lunches"))
-        self.sections?.append(getSectionWithName("Popular Snacks"))
+        for category in CATEGORIES {
+            self.getSectionWithName(category) { (section) in
+                self.sections?.append(section)
+                
+                self.tableView.beginUpdates()
+                let indexPath = NSIndexPath(forRow: (self.sections!.count - 1) * 2 + 1, inSection: 0)
+                let indexPath2 = NSIndexPath(forRow: (self.sections!.count - 1) * 2, inSection: 0)
+                self.tableView.insertRowsAtIndexPaths([indexPath, indexPath2], withRowAnimation: .Top)
+                self.tableView.endUpdates()
+            }
+        }
         
         self.tableView.reloadData()
     }
@@ -123,19 +133,15 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
     }
 
 
-    func getSectionWithName(name: String) -> Section {
-        let section = Section(name: name)
-        
-        section.foods = [Food(name: "Chicken", imageName: "chicken"),
-                         Food(name: "Sandwich", imageName: "sandwich"),
-                         Food(name: "Salmon", imageName: "salmon"),
-                         Food(name: "Bread", imageName: "bread"),
-                         Food(name: "Wrap", imageName: "wrap")]
-        return section
+    func getSectionWithName(name: String, completionHandler block: (section: Section)->()) {
+        RecipeService.rs.getRecipeListOfCategory(name) { (json) in
+            block(section: Section(name: name, json: json))
+        }
     }
     
     func foodCollectionViewCell(foodCollectionViewCell: FoodCollectionViewCell, cellTappedAtIndexPath indexPath: NSIndexPath) {
-        if let sections = self.sections, let foodObjects = sections[indexPath.section].foods {
+        if let sections = self.sections {
+            let foodObjects = sections[indexPath.section].foods
             let foodObject = foodObjects[indexPath.row]
             self.performSegueWithIdentifier(SEGUE_FOOD_VIEWER, sender: foodObject)
         }

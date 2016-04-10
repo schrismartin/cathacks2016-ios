@@ -8,17 +8,29 @@
 
 import Foundation
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class Section: NSObject {
-    var foods: [Food]?
+    var foods: [Food] = [Food]()
     var name: String!
     
-    init(name: String) {
+    override init() {
+        super.init()
+    }
+    
+    convenience init(name: String, json: JSON) {
+        self.init()
+        
         self.name = name
-        self.foods = [Food]()
+        
+        guard let results = json["results"].array else { return }
+        for foodJSON in results {
+            foods.append(Food(json: foodJSON))
+        }
     }
     
     func addFood(food: Food) {
-        self.foods?.append(food)
+        self.foods.append(food)
     }
 }

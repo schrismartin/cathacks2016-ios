@@ -14,36 +14,59 @@ import CommonCrypto
 
 class Food: NSObject {
     var name: String!
-    var image: UIImage!
-    var preparationTime: String?
-    var cookingTime: String?
+    var imageURL: NSURL!
+    var id: String!
+    var readyInMinutes: Int!
     
     override init() {
         super.init()
     }
     
-    convenience init(name: String, imageName: String) {
-        self.init()
-        self.name = name
-        self.image = UIImage(named: imageName)
-    }
+//    convenience init(name: String, imageName: String) {
+//        self.init()
+//        self.name = name
+//        self.image = UIImage(named: imageName)
+//    }
     
     convenience init(json: JSON) {
         self.init()
         
-        print(json)
-    }
-    
-    func getPictureWithName(name: String, withURL url: String) {
-        if let pic = loadImageForUserId(name) {
-            self.image = pic
-        } else {
-            Alamofire.request(.GET, url).response(completionHandler: { (request, response, data, error) in
-                self.image = UIImage(data: data!, scale: 1)!
-                self.saveImageForUserId(self.name, image: self.image)
-            })
+        if let id = json["id"].int {
+            self.id = String(id)
+        }
+        
+        if let name = json["title"].string {
+            self.name = name
+        }
+        
+        if let imageURLs = json["imageUrls"].array, let url = imageURLs[0].string {
+            var prefixedURL = IMAGE_PREFIX + url
+            prefixedURL = prefixedURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+            self.imageURL = NSURL(string: prefixedURL)
+        }
+        
+        if let readyInMinutes = json["readyInMinutes"].int {
+            self.readyInMinutes = readyInMinutes
         }
     }
+    
+//    func getPictureWithName(name: String, withURL url: String) {
+//        if let pic = loadImageForUserId(name) {
+//            self.image = pic
+//            print("Image cached for name: \(name)")
+//        } else {
+//            print("Image downloaded for name: \(name)")
+//            self.image = UIImage() // Placeholder to avoid segfault, update later.
+//            var prefixedURL = IMAGE_PREFIX + url
+//            prefixedURL = prefixedURL.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+//            Alamofire.request(.GET, prefixedURL).response(completionHandler: {
+//                (request, response, data, error) in
+//                guard let sureData = data else { return }
+//                self.image = UIImage(data: sureData, scale: 1)!
+//                self.saveImageForUserId(self.name, image: self.image)
+//            })
+//        }
+//    }
     
     func md5(string string: String) -> String {
         var digest = [UInt8](count: Int(CC_MD5_DIGEST_LENGTH), repeatedValue: 0)
@@ -63,12 +86,13 @@ class Food: NSObject {
         let hash = md5(string: id)
         let imageName = hash + ".png"
         let imagePath = fileInDocumentsDirectory(imageName)
+        print(imagePath)
         self.saveImage(image, path: imagePath)
     }
     
     func loadImageForUserId(id: String) -> UIImage? {
         let hash = md5(string: id)
-        let imageName = id + ".png"
+        let imageName = hash + ".png"
         let imagePath = fileInDocumentsDirectory(imageName)
         return loadImageFromPath(imagePath)
     }

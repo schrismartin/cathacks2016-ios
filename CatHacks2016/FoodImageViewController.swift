@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class FoodImageViewController: UIViewController {
 
@@ -15,7 +16,9 @@ class FoodImageViewController: UIViewController {
     var foodObject: Food! {
         didSet {
             guard self.foodImageView != nil else { return }
-            self.foodImageView.image = foodObject.image
+            self.foodImageView.sd_setImageWithURL(foodObject.imageURL)
+            
+            RecipeService.rs.getRecipe(foodObject.id)
         }
     }
     
@@ -25,8 +28,7 @@ class FoodImageViewController: UIViewController {
         // Do any additional setup after loading the view.
         guard self.foodImageView != nil else { return }
         
-        // Set food image
-        self.foodImageView.image = foodObject.image
+        self.foodImageView.sd_setImageWithURL(foodObject.imageURL)
     }
     
     override func viewDidLayoutSubviews() {

@@ -53,12 +53,12 @@ class FeaturedSectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.section != nil ? (self.section?.foods?.count)! : 0
+        return self.section != nil ? (self.section?.foods.count)! : 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CVCELL_FOOD, forIndexPath: indexPath) as! FoodCollectionViewCell
-        cell.foodObject = section?.foods![indexPath.row]
+        cell.foodObject = section?.foods[indexPath.row]
         
         return cell
     }

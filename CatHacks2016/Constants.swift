@@ -19,6 +19,29 @@ let HEADERS = [
 // API Endpoints
 let BASE_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"
 let API_URL = "http://recipezwolfram-devskwod.rhcloud.com/"
+let IMAGE_PREFIX = "https://spoonacular.com/recipeImages/"
+
+// Categories
+let CATEGORY_MAIN_COURSE = "Main Course"
+let CATEGORY_SIDE_DISH = "Side Dish"
+let CATEGORY_DESSERT = "Dessert"
+let CATEGORY_APPETIZER = "Appetizer"
+let CATEGORY_SALAD = "Salad"
+let CATEGORY_BREAKFAST = "Breakfast"
+let CATEGORY_SOUP = "Soup"
+let CATEGORY_BEVERAGE = "Beverage"
+let CATEGORY_SAUCE = "Sauce"
+let CATEGORY_DRINK = "Drink"
+let CATEGORIES = [CATEGORY_MAIN_COURSE,
+                  CATEGORY_SIDE_DISH,
+                  CATEGORY_DESSERT,
+                  CATEGORY_APPETIZER,
+                  CATEGORY_SALAD,
+                  CATEGORY_BREAKFAST,
+                  CATEGORY_SOUP,
+                  CATEGORY_BEVERAGE,
+                  CATEGORY_SAUCE,
+                  CATEGORY_DRINK]
 
 // Colors
 let COLOR_MAIN = UIColor(red:0.29, green:0.76, blue:0.83, alpha:1.00)

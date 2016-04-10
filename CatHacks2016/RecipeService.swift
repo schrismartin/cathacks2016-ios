@@ -19,21 +19,34 @@ class RecipeService {
         return _currentRecipe
     }
     
-    func getRecipe(id: String) {
+    func getRecipe(id: String, withCompletionHandler block: ((recipe: Recipe)->())?) {
         let recipeUrl = BASE_URL + id + "/information"
-        
+        print("GETTING THE RECIPE")
         Alamofire.request(.GET, recipeUrl, headers: HEADERS).responseJSON {
             response in
             
             if let value = response.result.value {
                 let json = JSON(value)
-                print(json)
-                let newRecipe: Dictionary<String, AnyObject> = [
-                    "id": json["id"].int!,
-                    "title": json["title"].string!,
-                    "sourceUrl": json["sourceUrl"].string!
-                ]
-                self._currentRecipe = Recipe(recipe: newRecipe)
+                self._currentRecipe = Recipe(json: json)
+                
+                block!(recipe: self._currentRecipe!)
+            }
+        }
+    }
+    
+    func getRecipe(id: String) {
+        self.getRecipe(id, withCompletionHandler: nil)
+    }
+    
+    func getRecipeListOfCategory(category: String, withCompletionHandler block: ((json: JSON)->Void )? ) {
+        let modifiedString = category.lowercaseString.componentsSeparatedByString(" ").joinWithSeparator("+")
+        
+        let categoryURL = BASE_URL + "search?type=" + modifiedString
+        Alamofire.request(.GET, categoryURL, headers: HEADERS).responseJSON {
+            response in
+            if let value = response.result.value {
+                let json = JSON(value)
+                block!(json: json)
             }
         }
     }
@@ -51,7 +64,6 @@ class RecipeService {
             
             if let value = response.result.value {
                 let json = JSON(value)
-                print(json)
                 
                 let ingredients = json["ingredients"].arrayValue
                 let steps = json["steps"].arrayValue

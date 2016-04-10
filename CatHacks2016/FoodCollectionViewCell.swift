@@ -34,7 +34,9 @@ class FoodCollectionViewCell: UICollectionViewCell {
     var foodObject: Food! {
         didSet {
             guard let view = self.imageView else { return }
-            view.image = foodObject.image
+//            view.image = foodObject.image
+//            view.sd_setImageWithURL(foodObject.imageURL)
+            view.sd_setImageWithURL(foodObject.imageURL)
             guard let label = self.label else { return }
             label.text = foodObject.name
         }
