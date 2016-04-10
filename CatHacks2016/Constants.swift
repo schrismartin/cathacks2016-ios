@@ -11,7 +11,8 @@ import UIKit
 
 // API Header Info
 let AUTH_KEY = "X-Mashape-Key"
-let AUTH_VAL = "aSoGZPw5csmshZTJHz4xxmK0hZEcp1EgQuhjsn3svPZIWfS0An"
+//let AUTH_VAL = "aSoGZPw5csmshZTJHz4xxmK0hZEcp1EgQuhjsn3svPZIWfS0An"
+let AUTH_VAL = "IHAeLyruPLmshnlxecT1FEmQpfNFp1hQa2yjsnEceB3m5nsUDP"
 let HEADERS = [
     AUTH_KEY: AUTH_VAL
 ]
