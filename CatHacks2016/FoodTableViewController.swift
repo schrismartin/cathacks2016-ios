@@ -29,7 +29,7 @@ class FoodTableViewController: UITableViewController {
     @IBOutlet weak var headerImageView: UIImageView! {
         didSet {
             guard let food = foodObject else { return }
-            headerImageView.sd_setImageWithURL(foodObject.imageURL)
+            headerImageView.sd_setImageWithURL(food.imageURL)
         }
     }
     @IBOutlet weak var titleLabel: UILabel! {
@@ -39,8 +39,13 @@ class FoodTableViewController: UITableViewController {
         }
     }
     
-    @IBOutlet weak var preparationTimeLabel: UILabel!
-    @IBOutlet weak var cookingTimeLabel: UILabel!
+    @IBOutlet weak var preparationTimeLabel: UILabel! {
+        didSet {
+            if let food = self.foodObject {
+                preparationTimeLabel.text = "Preparation Time: \(food.readyInMinutes) Mins"
+            }
+        }
+    }
     
     var foodObject: Food! {
         didSet {
@@ -48,6 +53,10 @@ class FoodTableViewController: UITableViewController {
                 title.text = foodObject.name
     //            header.image = foodObject.image
                 header.sd_setImageWithURL(foodObject.imageURL)
+            }
+            
+            if let prep = self.preparationTimeLabel {
+                prep.text = "Preparation Time: \(foodObject.readyInMinutes) Mins"
             }
             
             RecipeService.rs.getRecipe(foodObject.id) { (recipe) in
@@ -78,9 +87,8 @@ class FoodTableViewController: UITableViewController {
         
         self.pebbleButton.tintColor = UIColor.whiteColor()
         
-        
-        preparationTimeLabel.text = "Preparation Time: 20 Mins"
-        cookingTimeLabel.text = "Cooking Time: 25 Mins"
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 50
         
         self.pebbleButton.addTarget(self, action: #selector(FoodTableViewController.pebbleButtonPressed(_:)), forControlEvents: .TouchUpInside)
     }
@@ -96,6 +104,14 @@ class FoodTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "INGREDIENTS"
+        } else {
+            return nil
+        }
+    }
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -146,7 +162,6 @@ class FoodTableViewController: UITableViewController {
             let newPos = TITLE_RAISED_POS - (TITLE_RAISED_POS - TITLE_MAIN_POS) * percent
             titleYPosConstraint.constant = newPos
             self.preparationTimeLabel.alpha = 1 - percent
-            self.cookingTimeLabel.alpha = 1 - percent
             
         } else if offset >= HEADER_HEIGHT {
             barHeightConstraint.constant = BAR_NEW_HEIGHT
