@@ -24,7 +24,6 @@ class PebbleController: NSObject, PBPebbleCentralDelegate {
     
     var watch: PBWatch?
     var delegate: PebbleControllerDelegate?
-    var dictionary = Dictionary<Int, String>()
     
     //Set the app UUID
     var UUID: String? {
@@ -69,6 +68,11 @@ class PebbleController: NSObject, PBPebbleCentralDelegate {
         if (self.watch == watch) {
             self.watch = nil
         }
+        self.launchApp { (error) in
+            if error != nil {
+                print(error)
+            }
+        }
         NSNotificationCenter.defaultCenter().postNotificationName("pebbleDisconnected", object: nil)
     }
     
@@ -83,20 +87,4 @@ class PebbleController: NSObject, PBPebbleCentralDelegate {
             completionHandler(error: error)
         })
     }
-    
-    func sendDictionary(dictionary: [NSNumber: NSString], completionHandler: (error: NSError?) -> Void) {
-        if dictionary.isEmpty {
-            return
-        }
-        
-        self.watch?.appMessagesPushUpdate(dictionary, onSent: {
-            watch, msgDictionary, error in
-            print(dictionary, "sent to Pebble")
-            if error !== nil {
-                print("ERROR: ", error)
-            }
-            completionHandler(error: error)
-        })
-    }
-    
 }
