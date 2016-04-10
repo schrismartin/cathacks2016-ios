@@ -16,7 +16,7 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
     
     var sections: [Section]?
     
-    let ORIGINAL_HEIGHT = 190
+    let ORIGINAL_HEIGHT: CGFloat = 190
     let NAVBAR_HEIGHT: CGFloat = 64
     
     var gradientOverlay: UIImageView!
@@ -140,6 +140,11 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
             self.performSegueWithIdentifier(SEGUE_FOOD_VIEWER, sender: foodObject)
         }
     }
+    
+//    override func scrollViewDidScroll(scrollView: UIScrollView) {
+//        let offset = scrollView.contentOffset.y + NAVBAR_HEIGHT
+//        
+//    }
     
     /*
     // Override to support conditional editing of the table view.

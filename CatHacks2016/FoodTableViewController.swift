@@ -10,21 +10,43 @@ import UIKit
 
 class FoodTableViewController: UITableViewController {
     
+    @IBOutlet weak var barView: UIView!
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var pebbleButton: UIButton!
     @IBOutlet weak var headerHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var barHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var barYPosConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleYPosConstraint: NSLayoutConstraint!
     
     let VIEW_HEIGHT: CGFloat = 358
     let BAR_ORIGINAL_HEIGHT: CGFloat = 54
     let HEADER_HEIGHT: CGFloat = 358 - 54
     let BAR_NEW_HEIGHT: CGFloat = 64
     let BAR_Y_POS: CGFloat = 0
+    let TITLE_MAIN_POS: CGFloat = 12
+    let TITLE_RAISED_POS: CGFloat = 22
+    
+    @IBOutlet weak var headerImageView: UIImageView! {
+        didSet {
+            guard let food = foodObject else { return }
+            headerImageView.image = food.image
+        }
+    }
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            guard let food = foodObject else { return }
+            titleLabel.text = food.name
+        }
+    }
+    
+    @IBOutlet weak var preparationTimeLabel: UILabel!
+    @IBOutlet weak var cookingTimeLabel: UILabel!
     
     var foodObject: Food! {
         didSet {
-            print(foodObject.name)
+            guard let title = titleLabel, let header = headerImageView else { return }
+            title.text = foodObject.name
+            header.image = foodObject.image
         }
     }
 
@@ -40,8 +62,13 @@ class FoodTableViewController: UITableViewController {
         // Hide navbar and set insets accordingly.
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        self.barView.clipsToBounds = true
         
         self.pebbleButton.tintColor = UIColor.whiteColor()
+        
+        
+        preparationTimeLabel.text = "Preparation Time: 20 Mins"
+        cookingTimeLabel.text = "Cooking Time: 25 Mins"
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,7 +94,10 @@ class FoodTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        let differential = BAR_NEW_HEIGHT - BAR_ORIGINAL_HEIGHT
+        let animated = self.tableView.contentOffset.y < HEADER_HEIGHT - differential
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationController?.popViewControllerAnimated(true)
     }
 
@@ -81,22 +111,33 @@ class FoodTableViewController: UITableViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         let offset = scrollView.contentOffset.y
+        
+        // Handle Header Height
         if offset < 0 {
             self.headerHeightConstraint.constant = HEADER_HEIGHT - offset
         } else {
             self.headerHeightConstraint.constant = HEADER_HEIGHT
         }
         
+        // Handle Bar Height
         if offset < HEADER_HEIGHT && offset > 0 {
             let percent = offset/HEADER_HEIGHT
             let newHeight = BAR_ORIGINAL_HEIGHT + (BAR_NEW_HEIGHT - BAR_ORIGINAL_HEIGHT) * percent
             barHeightConstraint.constant = newHeight
+            
+            // Handle Label Position and Subtitle Alpha
+            let newPos = TITLE_RAISED_POS - (TITLE_RAISED_POS - TITLE_MAIN_POS) * percent
+            titleYPosConstraint.constant = newPos
+            self.preparationTimeLabel.alpha = 1 - percent
+            self.cookingTimeLabel.alpha = 1 - percent
+            
         } else if offset >= HEADER_HEIGHT {
             barHeightConstraint.constant = BAR_NEW_HEIGHT
         } else {
             barHeightConstraint.constant = BAR_ORIGINAL_HEIGHT
         }
         
+        // Handle Bar Position
         let differential = BAR_NEW_HEIGHT - BAR_ORIGINAL_HEIGHT
         if offset >= HEADER_HEIGHT - differential {
             self.barYPosConstraint.constant = HEADER_HEIGHT - differential - offset
