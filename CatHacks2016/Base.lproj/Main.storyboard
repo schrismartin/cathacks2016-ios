@@ -243,6 +243,9 @@
                                                 <constraint firstAttribute="width" constant="36" id="2V5-tg-5wJ"/>
                                             </constraints>
                                             <state key="normal" image="send_to_pebble"/>
+                                            <connections>
+                                                <action selector="pebbleButtonPressed:" destination="eBZ-8V-1uZ" eventType="touchUpInside" id="TuP-GJ-VG3"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOW-5z-tb2">
                                             <rect key="frame" x="55" y="21" width="484" height="21"/>
@@ -313,7 +316,7 @@
                                             <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>

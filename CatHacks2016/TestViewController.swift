@@ -27,7 +27,7 @@ class TestViewController: UIViewController {
     
     @IBAction func test2(sender: AnyObject) {
         if let sourceUrl = RecipeService.rs.currentRecipe?.sourceUrl where sourceUrl != "" {
-            RecipeService.rs.getWatchRecipe(sourceUrl) { (result) in
+            RecipeService.rs.getWatchRecipe() { (result) in
                 print("firebase is doing the work")
             }
         }

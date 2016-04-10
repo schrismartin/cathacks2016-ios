@@ -178,8 +178,15 @@ class FoodTableViewController: UITableViewController {
         }
     }
     
-    func pebbleButtonPressed(sender: UIButton) {
-        // TODO: @Sam, implement this
+    @IBAction func pebbleButtonPressed(sender: UIButton) {
+        print("did tap pebble button")
+        RecipeService.rs.getWatchRecipe() { (result) in
+            print("firebase is doing the work")
+            let alert = UIAlertController(title: "Recipe Sent", message: "Your recipe has been sent to your Pebble smartwatch", preferredStyle: .Alert)
+            let action = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+            alert.addAction(action)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
 
     /*

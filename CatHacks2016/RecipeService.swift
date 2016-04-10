@@ -51,22 +51,25 @@ class RecipeService {
         }
     }
     
-    func getWatchRecipe(sourceUrl: String, completion: (result: Bool) -> Void) {
-        let recipeUrl = API_URL + "recipe?url=" + sourceUrl + "&watch=cathacks"
-        
-        print(recipeUrl)
-        Alamofire.request(.GET, recipeUrl).responseJSON {
-            response in
+    func getWatchRecipe(completion: (result: Bool) -> Void) {
+        if let sourceUrl = RecipeService.rs.currentRecipe?.sourceUrl where sourceUrl != "" {
+            let recipeUrl = API_URL + "recipe?url=" + sourceUrl + "&watch=cathacks"
             
-            if response.result.error !== nil {
-                print(response.result.error);
+            Alamofire.request(.GET, recipeUrl).responseJSON {
+                response in
+                
+                if response.result.error !== nil {
+                    print(response.result.error);
+                }
+                
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    print(json)
+                    completion(result: true)
+                }
             }
-            
-            if let value = response.result.value {
-                let json = JSON(value)
-                print(json)
-                completion(result: true)
-            }
+        } else {
+            print("currentRecipe is not set")
         }
     }
     

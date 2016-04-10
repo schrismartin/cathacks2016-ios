@@ -143,6 +143,7 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
         if let sections = self.sections {
             let foodObjects = sections[indexPath.section].foods
             let foodObject = foodObjects[indexPath.row]
+            RecipeService.rs.getRecipe(foodObject.id)
             self.performSegueWithIdentifier(SEGUE_FOOD_VIEWER, sender: foodObject)
         }
     }
