@@ -10,9 +10,9 @@ import UIKit
 
 class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    var orderedViewControllers: [FoodImageViewController]!
+    var orderedViewControllers = [FoodImageViewController]()
     
-    var foodArray: [Food]!
+    var foodArray: [Food] = [Food]()
     
     var pageDelegate: HeaderPageViewControllerDelegate?
     
@@ -27,23 +27,22 @@ class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource
         self.dataSource = self
         self.delegate = self
         
-        self.foodArray = [Food(name: "Chicken", imageName: "chicken"),
-                            Food(name: "Sandwich", imageName: "sandwich"),
-                            Food(name: "Salmon", imageName: "salmon"),
-                            Food(name: "Bread", imageName: "bread"),
-                            Food(name: "Wrap", imageName: "wrap")]
-        
-        self.orderedViewControllers = []
-        for food in foodArray {
-            self.orderedViewControllers.append(newFoodControllerWithFood(food))
+        RecipeService.rs.getRecipeListOfCategory(CATEGORY_MAIN_COURSE) { (json) in
+            let headerSection = Section(name: CATEGORY_MAIN_COURSE, json: json)
+            self.foodArray = headerSection.foods
+            
+            self.orderedViewControllers = []
+            for food in self.foodArray {
+                self.orderedViewControllers.append(self.newFoodControllerWithFood(food))
+            }
+            
+            if let firstViewController = self.orderedViewControllers.first {
+                self.setViewControllers([firstViewController], direction: .Forward, animated: true, completion: nil)
+                self.currentViewController = firstViewController
+            }
+            
+            self.pageDelegate?.headerPageViewController(self, didUpdatePageCount: self.orderedViewControllers.count)
         }
-        
-        if let firstViewController = orderedViewControllers.first {
-            setViewControllers([firstViewController], direction: .Forward, animated: true, completion: nil)
-            self.currentViewController = firstViewController
-        }
-        
-        pageDelegate?.headerPageViewController(self, didUpdatePageCount: orderedViewControllers.count)
         
         self.setUpTimer()
     }
@@ -102,7 +101,7 @@ class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource
     }
     
     func advanceByOne() {
-        if let viewController = pageViewController(self, viewControllerAfterViewController: self.currentViewController!) as? FoodImageViewController {
+        if let currentViewController = self.currentViewController, let viewController = pageViewController(self, viewControllerAfterViewController: currentViewController) as? FoodImageViewController {
             setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
             self.currentViewController = viewController
             

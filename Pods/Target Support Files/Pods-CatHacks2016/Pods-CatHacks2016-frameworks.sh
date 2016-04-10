@@ -86,10 +86,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-CatHacks2016/Alamofire.framework"
   install_framework "${PODS_ROOT}/PebbleKit/PebbleKit.framework"
+  install_framework "Pods-CatHacks2016/SDWebImage.framework"
   install_framework "Pods-CatHacks2016/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-CatHacks2016/Alamofire.framework"
   install_framework "${PODS_ROOT}/PebbleKit/PebbleKit.framework"
+  install_framework "Pods-CatHacks2016/SDWebImage.framework"
   install_framework "Pods-CatHacks2016/SwiftyJSON.framework"
 fi

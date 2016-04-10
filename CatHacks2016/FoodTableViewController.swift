@@ -29,7 +29,7 @@ class FoodTableViewController: UITableViewController {
     @IBOutlet weak var headerImageView: UIImageView! {
         didSet {
             guard let food = foodObject else { return }
-            headerImageView.image = food.image
+            headerImageView.sd_setImageWithURL(foodObject.imageURL)
         }
     }
     @IBOutlet weak var titleLabel: UILabel! {
@@ -44,9 +44,21 @@ class FoodTableViewController: UITableViewController {
     
     var foodObject: Food! {
         didSet {
-            guard let title = titleLabel, let header = headerImageView else { return }
-            title.text = foodObject.name
-            header.image = foodObject.image
+            if let title = titleLabel, let header = headerImageView {
+                title.text = foodObject.name
+    //            header.image = foodObject.image
+                header.sd_setImageWithURL(foodObject.imageURL)
+            }
+            
+            RecipeService.rs.getRecipe(foodObject.id) { (recipe) in
+                self.recipeObject = recipe
+            }
+        }
+    }
+    
+    var recipeObject: Recipe! {
+        didSet {
+            self.tableView.reloadData()
         }
     }
 
@@ -69,6 +81,8 @@ class FoodTableViewController: UITableViewController {
         
         preparationTimeLabel.text = "Preparation Time: 20 Mins"
         cookingTimeLabel.text = "Cooking Time: 25 Mins"
+        
+        self.pebbleButton.addTarget(self, action: #selector(FoodTableViewController.pebbleButtonPressed(_:)), forControlEvents: .TouchUpInside)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -90,7 +104,8 @@ class FoodTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 50
+        guard let recipe = self.recipeObject else { return 0 }
+        return recipe.ingredients.count
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -104,7 +119,9 @@ class FoodTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(CELL_INGREDIENT, forIndexPath: indexPath)
 
+        guard let recipe = self.recipeObject else { return cell }
         // Configure the cell...
+        cell.textLabel?.text = recipe.ingredients[indexPath.row].description
 
         return cell
     }
@@ -144,6 +161,10 @@ class FoodTableViewController: UITableViewController {
         } else {
             self.barYPosConstraint.constant = BAR_Y_POS
         }
+    }
+    
+    func pebbleButtonPressed(sender: UIButton) {
+        // TODO: @Sam, implement this
     }
 
     /*

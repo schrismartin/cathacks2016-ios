@@ -2,12 +2,16 @@ PODS:
   - Alamofire (3.3.1)
   - CommonCrypto (1.0)
   - PebbleKit (3.1.1)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - CommonCrypto (from `https://github.com/Canecom/CommonCrypto.git`)
   - PebbleKit
+  - SDWebImage (~> 3.7)
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
 EXTERNAL SOURCES:
@@ -28,6 +32,7 @@ SPEC CHECKSUMS:
   Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   CommonCrypto: 9c3cefb896e3e7cb906ce67d25e5081296b3d0da
   PebbleKit: 390181163256815738e467f183e7c65e16b56d25
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
 COCOAPODS: 0.39.0

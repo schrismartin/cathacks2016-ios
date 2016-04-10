@@ -21,8 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PBPebbleCentralDelegate {
         
         let pebbleController = PebbleController.instance
         pebbleController.delegate = self
-//        pebbleController.UUID = "769dd7d3-f147-4b71-a12e-b6d63581da45"
-        pebbleController.UUID = "4296827b-6d2d-42ff-baa0-7bd34eeeec5f"
+        pebbleController.UUID = "5807dec1-c877-4fb7-b408-3ec688008e6c"
         
         UINavigationBar.appearance().barTintColor = COLOR_MAIN;
         UINavigationBar.appearance().translucent = true
