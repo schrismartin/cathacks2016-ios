@@ -28,6 +28,7 @@ let TAB_CONTROLLER_MAIN = "MainTabViewController"
 // TableView Cells
 let CELL_SECTION = "SectionTableViewCell"
 let CELL_TITLE = "TitleTableViewCell"
+let CELL_INGREDIENT = "IngredientCell"
 
 // CollectionView Cells
 let CVCELL_FOOD = "FoodCollectionViewCell"

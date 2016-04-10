@@ -217,13 +217,74 @@
         <scene sceneID="sMy-t1-e3a">
             <objects>
                 <tableViewController storyboardIdentifier="FoodTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eBZ-8V-1uZ" customClass="FoodTableViewController" customModule="CatHacks2016" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="d0U-Br-tmZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="d0U-Br-tmZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="Sam-WZ-hIb">
+                            <rect key="frame" x="0.0" y="64" width="600" height="358"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chicken" translatesAutoresizingMaskIntoConstraints="NO" id="Cb2-lB-D6r">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="294"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="294" id="aXH-wI-ZfF"/>
+                                    </constraints>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y11-ON-Kxo">
+                                    <rect key="frame" x="0.0" y="294" width="600" height="64"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xo-0i-sZG">
+                                            <rect key="frame" x="549" y="22" width="36" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="0zx-dp-lnK"/>
+                                                <constraint firstAttribute="width" constant="36" id="2V5-tg-5wJ"/>
+                                            </constraints>
+                                            <state key="normal" image="send_to_pebble"/>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicken" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOW-5z-tb2">
+                                            <rect key="frame" x="267" y="31" width="65" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xd-PN-use">
+                                            <rect key="frame" x="15" y="22" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="PMC-Jh-s3S"/>
+                                                <constraint firstAttribute="width" constant="30" id="Ren-JI-nqF"/>
+                                            </constraints>
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <state key="normal" image="Star-50">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.33333333329999998" green="0.74509803919999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="9xo-0i-sZG" secondAttribute="trailing" constant="15" id="7hS-gJ-u9P"/>
+                                        <constraint firstAttribute="bottom" secondItem="9xo-0i-sZG" secondAttribute="bottom" constant="12" id="KEi-f8-ESW"/>
+                                        <constraint firstItem="4xd-PN-use" firstAttribute="leading" secondItem="Y11-ON-Kxo" secondAttribute="leading" constant="15" id="Qgz-r9-xbI"/>
+                                        <constraint firstAttribute="bottom" secondItem="4xd-PN-use" secondAttribute="bottom" constant="12" id="UOp-fT-hGn"/>
+                                        <constraint firstItem="uOW-5z-tb2" firstAttribute="centerX" secondItem="Y11-ON-Kxo" secondAttribute="centerX" id="joR-Qr-Xcm"/>
+                                        <constraint firstAttribute="height" constant="64" id="s4I-9P-aKQ"/>
+                                        <constraint firstAttribute="bottom" secondItem="uOW-5z-tb2" secondAttribute="bottom" constant="12" id="upL-wG-ugI"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Y11-ON-Kxo" firstAttribute="leading" secondItem="Sam-WZ-hIb" secondAttribute="leading" id="0Nm-Eu-FlB"/>
+                                <constraint firstItem="Y11-ON-Kxo" firstAttribute="top" secondItem="Cb2-lB-D6r" secondAttribute="bottom" id="Rkc-8G-2TB"/>
+                                <constraint firstAttribute="trailing" secondItem="Cb2-lB-D6r" secondAttribute="trailing" id="Tbw-V9-iSM"/>
+                                <constraint firstAttribute="trailing" secondItem="Y11-ON-Kxo" secondAttribute="trailing" id="VGA-wH-fJT"/>
+                                <constraint firstAttribute="bottom" secondItem="Y11-ON-Kxo" secondAttribute="bottom" id="r7m-cn-awa"/>
+                                <constraint firstItem="Cb2-lB-D6r" firstAttribute="leading" secondItem="Sam-WZ-hIb" secondAttribute="leading" id="zVD-bL-rnR"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="OJ5-hg-1AJ">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IngredientCell" id="OJ5-hg-1AJ">
+                                <rect key="frame" x="0.0" y="471.5" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OJ5-hg-1AJ" id="wBQ-aU-MJj">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -236,6 +297,13 @@
                             <outlet property="delegate" destination="eBZ-8V-1uZ" id="MJr-Ph-pgy"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="barHeightConstraint" destination="s4I-9P-aKQ" id="eOb-xv-el6"/>
+                        <outlet property="barYPosConstraint" destination="r7m-cn-awa" id="ZZS-io-hvg"/>
+                        <outlet property="favoriteButton" destination="4xd-PN-use" id="dTi-1U-XGe"/>
+                        <outlet property="headerHeightConstraint" destination="aXH-wI-ZfF" id="fz9-yC-Var"/>
+                        <outlet property="pebbleButton" destination="9xo-0i-sZG" id="tNR-Ma-zWt"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hxi-BZ-eOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,6 +406,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Star-50" width="50" height="50"/>
         <image name="bread" width="800" height="500"/>
+        <image name="chicken" width="800" height="600"/>
+        <image name="send_to_pebble" width="27" height="29"/>
     </resources>
 </document>

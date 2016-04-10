@@ -19,7 +19,6 @@ class FeaturedSectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
     }
     
     var foodDelegate: FoodCollectionViewCellDelegate?
-    
     var layout = UICollectionViewFlowLayout()
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -53,7 +52,6 @@ class FeaturedSectionTableViewCell: UITableViewCell, UICollectionViewDelegate, U
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(self.section?.foods?.count)
         return self.section != nil ? (self.section?.foods?.count)! : 0
     }
     

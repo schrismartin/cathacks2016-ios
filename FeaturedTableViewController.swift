@@ -43,6 +43,10 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
         
         self.tableView.reloadData()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -95,7 +99,8 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
             
             guard let section = self.sections else { return cell }
             cell.section = section[indexPath.row/2]
-            cell.index = indexPath.row
+            cell.index = indexPath.row/2
+            cell.foodDelegate = self
             
             return cell
         }
@@ -111,12 +116,10 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
     
     func headerPageViewController(headerPageViewController: HeaderViewController, didUpdatePageIndex count: Int) {
         pageControl.currentPage = count
-        print("Page set to index: \(count)")
     }
     
     func headerPageViewController(headerPageViewController: HeaderViewController, didUpdatePageCount count: Int) {
         pageControl.numberOfPages = count
-        print("Page set to count: \(count)")
     }
 
 
@@ -129,6 +132,13 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
                          Food(name: "Bread", imageName: "bread"),
                          Food(name: "Wrap", imageName: "wrap")]
         return section
+    }
+    
+    func foodCollectionViewCell(foodCollectionViewCell: FoodCollectionViewCell, cellTappedAtIndexPath indexPath: NSIndexPath) {
+        if let sections = self.sections, let foodObjects = sections[indexPath.section].foods {
+            let foodObject = foodObjects[indexPath.row]
+            self.performSegueWithIdentifier(SEGUE_FOOD_VIEWER, sender: foodObject)
+        }
     }
     
     /*
@@ -169,6 +179,10 @@ class FeaturedTableViewController: UITableViewController, HeaderPageViewControll
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let headerPageViewController = segue.destinationViewController as? HeaderViewController {
             headerPageViewController.pageDelegate = self
+        }
+        
+        if let foodViewerViewController = segue.destinationViewController as? FoodTableViewController {
+            foodViewerViewController.foodObject = sender as! Food
         }
     }
 
