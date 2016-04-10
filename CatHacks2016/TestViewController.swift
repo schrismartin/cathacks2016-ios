@@ -26,12 +26,10 @@ class TestViewController: UIViewController {
     }
     
     @IBAction func test2(sender: AnyObject) {
-        let artist: String = "Childish Gambino"
-        let track: String = "Some Track Name"
-        
-        pebbleController.sendDictionary([NSNumber(int: 0): NSString(string: artist), NSNumber(int:1): NSString(string: track)], completionHandler: {
-            error in
-            print("Sent message with artist", artist, "and title", track)
-        })
+        if let sourceUrl = RecipeService.rs.currentRecipe?.sourceUrl where sourceUrl != "" {
+            RecipeService.rs.getWatchRecipe(sourceUrl) { (result) in
+                print("firebase is doing the work")
+            }
+        }
     }
 }

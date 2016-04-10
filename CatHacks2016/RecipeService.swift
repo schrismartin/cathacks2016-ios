@@ -51,8 +51,8 @@ class RecipeService {
         }
     }
     
-    func getRecipePacket(sourceUrl: String, completion: (ingredient: String, step: String) -> Void) {
-        let recipeUrl = API_URL + "recipe?url=" + sourceUrl
+    func getWatchRecipe(sourceUrl: String, completion: (result: Bool) -> Void) {
+        let recipeUrl = API_URL + "recipe?url=" + sourceUrl + "&watch=cathacks"
         
         print(recipeUrl)
         Alamofire.request(.GET, recipeUrl).responseJSON {
@@ -64,12 +64,8 @@ class RecipeService {
             
             if let value = response.result.value {
                 let json = JSON(value)
-                
-                let ingredients = json["ingredients"].arrayValue
-                let steps = json["steps"].arrayValue
-                
-                //send
-                completion(ingredient: ingredients[0].stringValue, step: steps[0].stringValue)
+                print(json)
+                completion(result: true)
             }
         }
     }
