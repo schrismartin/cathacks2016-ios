@@ -31,14 +31,19 @@ let VIEW_CONTROLLER_FOOD = "FoodTableViewController"
 let VIEW_CONTROLLER_FAVORITES = "FavoritesTableViewController.swift"
 let VIEW_CONTROLLER_HEADER = "HeaderViewController"
 
-let VIEW_CONTROLLER_RED = "RedViewController"
-let VIEW_CONTROLLER_BLUE = "BlueViewController"
+let VIEW_CONTROLLER_FOOD_IMAGE = "FoodImageViewController"
 
 // Tab Controllers
 let TAB_CONTROLLER_MAIN = "MainTabViewController"
 
 // TableView Cells
 let CELL_SECTION = "SectionTableViewCell"
+let CELL_TITLE = "TitleTableViewCell"
+let CELL_INGREDIENT = "IngredientCell"
+
+// CollectionView Cells
+let CVCELL_FOOD = "FoodCollectionViewCell"
 
 // Segues
 let SEGUE_LOADED = "LoadedSegue"
+let SEGUE_FOOD_VIEWER = "FoodViewerSegue"

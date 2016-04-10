@@ -7,6 +7,7 @@ target 'CatHacks2016' do
 pod 'PebbleKit'
 pod 'Alamofire', '~> 3.0'
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'CommonCrypto', :git => 'https://github.com/Canecom/CommonCrypto.git'
 end
 
 target 'CatHacks2016Tests' do

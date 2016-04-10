@@ -8,24 +8,44 @@
 
 import UIKit
 
-class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource {
+class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
 
-    private(set) lazy var orderedViewControllers: [UIViewController] = {
-        return [self.newColoredViewController(VIEW_CONTROLLER_BLUE),
-                self.newColoredViewController(VIEW_CONTROLLER_RED)]
-    }()
+    var orderedViewControllers: [FoodImageViewController]!
+    
+    var foodArray: [Food]!
+    
+    var pageDelegate: HeaderPageViewControllerDelegate?
+    
+    var currentViewController: FoodImageViewController?
+    
+    var timer: NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("PageView Succesfully Loaded")
 
         // Do any additional setup after loading the view.
         self.dataSource = self
+        self.delegate = self
+        
+        self.foodArray = [Food(name: "Chicken", imageName: "chicken"),
+                            Food(name: "Sandwich", imageName: "sandwich"),
+                            Food(name: "Salmon", imageName: "salmon"),
+                            Food(name: "Bread", imageName: "bread"),
+                            Food(name: "Wrap", imageName: "wrap")]
+        
+        self.orderedViewControllers = []
+        for food in foodArray {
+            self.orderedViewControllers.append(newFoodControllerWithFood(food))
+        }
         
         if let firstViewController = orderedViewControllers.first {
             setViewControllers([firstViewController], direction: .Forward, animated: true, completion: nil)
+            self.currentViewController = firstViewController
         }
+        
+        pageDelegate?.headerPageViewController(self, didUpdatePageCount: orderedViewControllers.count)
+        
+        self.setUpTimer()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,25 +54,28 @@ class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+        guard let vc = viewController as? FoodImageViewController else { return nil }
+        guard let viewControllerIndex = orderedViewControllers.indexOf(vc) else {
             return nil
         }
         
         let previousIndex = viewControllerIndex - 1
         
         guard previousIndex >= 0 else {
-            return nil
+            return orderedViewControllers.last
         }
         
         guard orderedViewControllers.count > previousIndex else {
             return nil
         }
         
+        self.setUpTimer()
         return orderedViewControllers[previousIndex]
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        guard let viewControllerIndex = orderedViewControllers.indexOf(viewController) else {
+        guard let vc = viewController as? FoodImageViewController else { return nil }
+        guard let viewControllerIndex = orderedViewControllers.indexOf(vc) else {
             return nil
         }
         
@@ -60,19 +83,51 @@ class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource
         let orderedViewControllersCount = orderedViewControllers.count
         
         guard orderedViewControllersCount != nextIndex else {
-            return nil
+            return orderedViewControllers.first
         }
         
         guard orderedViewControllersCount > nextIndex else {
             return nil
         }
         
+        self.setUpTimer()
         return orderedViewControllers[nextIndex]
     }
     
-    private func newColoredViewController(vc: String) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: nil) .
-            instantiateViewControllerWithIdentifier(vc)
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+        if let firstViewController = viewControllers?.first as? FoodImageViewController,
+            let index = orderedViewControllers.indexOf(firstViewController) {
+            pageDelegate?.headerPageViewController(self, didUpdatePageIndex: index)
+        }
+    }
+    
+    func advanceByOne() {
+        if let viewController = pageViewController(self, viewControllerAfterViewController: self.currentViewController!) as? FoodImageViewController {
+            setViewControllers([viewController], direction: .Forward, animated: true, completion: nil)
+            self.currentViewController = viewController
+            
+            if let index = orderedViewControllers.indexOf(self.currentViewController!) {
+                pageDelegate?.headerPageViewController(self, didUpdatePageIndex: index)
+            }
+        }
+    }
+    
+    func setUpTimer() {
+        guard self.timer != nil else {
+            self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(HeaderViewController.advanceByOne), userInfo: nil, repeats: false)
+            return
+        }
+        
+        self.timer.invalidate()
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(HeaderViewController.advanceByOne), userInfo: nil, repeats: false)
+    }
+    
+    
+    private func newFoodControllerWithFood(foodObject: Food) -> FoodImageViewController {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier(VIEW_CONTROLLER_FOOD_IMAGE) as! FoodImageViewController
+        vc.foodObject = foodObject
+
+        return vc
     }
     
 
@@ -86,4 +141,24 @@ class HeaderViewController: UIPageViewController, UIPageViewControllerDataSource
     }
     */
 
+}
+
+protocol HeaderPageViewControllerDelegate {
+    
+    /**
+     Called when the number of pages is updated.
+     
+     - parameter tutorialPageViewController: the TutorialPageViewController instance
+     - parameter count: the total number of pages.
+     */
+    func headerPageViewController(headerPageViewController: HeaderViewController, didUpdatePageCount count: Int)
+    
+    /**
+     Called when the current index is updated.
+     
+     - parameter tutorialPageViewController: the TutorialPageViewController instance
+     - parameter index: the index of the currently visible page.
+     */
+    func headerPageViewController(headerPageViewController: HeaderViewController, didUpdatePageIndex index: Int)
+    
 }

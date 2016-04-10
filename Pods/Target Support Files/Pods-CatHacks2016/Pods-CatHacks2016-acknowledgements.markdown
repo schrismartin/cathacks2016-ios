@@ -24,6 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+## CommonCrypto
+
+Copyright Canecom 2016
+
 ## PebbleKit
 
 © 2015 Pebble Technology Corp. All rights reserved.

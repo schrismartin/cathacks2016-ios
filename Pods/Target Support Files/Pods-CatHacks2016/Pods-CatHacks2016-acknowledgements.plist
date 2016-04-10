@@ -41,6 +41,14 @@ THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+			<string>Copyright Canecom 2016</string>
+			<key>Title</key>
+			<string>CommonCrypto</string>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+		</dict>
+		<dict>
+			<key>FooterText</key>
 			<string>&#169; 2015 Pebble Technology Corp. All rights reserved.
 </string>
 			<key>Title</key>
