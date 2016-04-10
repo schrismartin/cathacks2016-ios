@@ -9,16 +9,19 @@
 import UIKit
 import PebbleKit
 
+
 class LoadingViewController: UIViewController {
+    
+    let pebbleController = PebbleController.instance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        WatchService.ws.connectWatch()
+        
     }
     
     override func viewWillDisappear(animated: Bool) {

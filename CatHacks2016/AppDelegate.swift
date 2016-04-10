@@ -18,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PBPebbleCentralDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Override point for customization after application launch.
-        pebbleCentral = PBPebbleCentral.defaultCentral()
-        pebbleCentral.appUUID = NSUUID(UUIDString: "769dd7d3-f147-4b71-a12e-b6d63581da45")
+        
+        let pebbleController = PebbleController.instance
+        pebbleController.delegate = self
+//        pebbleController.UUID = "769dd7d3-f147-4b71-a12e-b6d63581da45"
+        pebbleController.UUID = "4296827b-6d2d-42ff-baa0-7bd34eeeec5f"
         
         UINavigationBar.appearance().barTintColor = COLOR_MAIN;
         UINavigationBar.appearance().translucent = true
@@ -54,5 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, PBPebbleCentralDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
+
+extension AppDelegate: PebbleControllerDelegate {
+    func pebbleController(pebbleController: PebbleController, receivedMessage: Dictionary<NSObject, AnyObject>) {}
 }
 

@@ -47,7 +47,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="131" sectionHeaderHeight="18" sectionFooterHeight="18" id="Pt6-oD-YMc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="N14-6S-nUt">
                             <rect key="frame" x="0.0" y="64" width="600" height="190"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -163,6 +163,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hxi-BZ-eOx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3577" y="129"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="6Ov-AE-d0k">
+            <objects>
+                <viewController id="EuY-Vq-eis" customClass="TestViewController" customModule="CatHacks2016" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="N7P-Ut-q0U"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qxw-hO-aZK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nxf-d1-bsw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7H1-PZ-Bo0">
+                                <rect key="frame" x="281" y="300" width="39" height="30"/>
+                                <state key="normal" title="Test2"/>
+                                <connections>
+                                    <action selector="test2:" destination="EuY-Vq-eis" eventType="touchUpInside" id="P1S-05-ZmM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwt-rD-p21">
+                                <rect key="frame" x="282" y="220" width="36" height="30"/>
+                                <state key="normal" title="Test1"/>
+                                <connections>
+                                    <action selector="test1:" destination="EuY-Vq-eis" eventType="touchUpInside" id="Ocv-eo-u7f"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Mwt-rD-p21" firstAttribute="centerX" secondItem="Nxf-d1-bsw" secondAttribute="centerX" id="08L-nA-ckn"/>
+                            <constraint firstItem="7H1-PZ-Bo0" firstAttribute="top" secondItem="Mwt-rD-p21" secondAttribute="bottom" constant="50" id="YZW-0c-ume"/>
+                            <constraint firstItem="7H1-PZ-Bo0" firstAttribute="centerX" secondItem="Nxf-d1-bsw" secondAttribute="centerX" id="azi-Gx-Gwh"/>
+                            <constraint firstItem="Mwt-rD-p21" firstAttribute="top" secondItem="N7P-Ut-q0U" secondAttribute="bottom" constant="200" id="w0L-ig-NkL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="testBtn1" destination="Mwt-rD-p21" id="nrU-F2-gFS"/>
+                        <outlet property="testBtn2" destination="7H1-PZ-Bo0" id="IHw-qa-sWn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CAA-Mf-Nt8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3611" y="844"/>
         </scene>
         <!--MainTabViewController-->
         <scene sceneID="OiV-bi-aEk">
